@@ -1,9 +1,3 @@
-# REMEMBER
-
-This is the source of truth, the original module, **in development** at /nlp-be (with Besta.domains back-end).
-
-Then, when building/publishing this to NPM, copy it over to /public (front-end server) to allow for CDN distribution.
-
 # Zero setup. Zero dependencies. Full featured.
 
 You can haz configuration if you want it. Scroll down to find out.  
@@ -19,16 +13,17 @@ Instead, simply import it as
 const cconsole = require('colorful-console-logger');
 ```
 
+and use it as
+
+```
+cconsole.log('no special colors');
+cconsole.info('light blue (teal/aqua) background');
+cconsole.warn('this is a warning, yellow/orange background');
+cconsole.error('Error: bright red background, yellow text');
+```
+
 Or as whatever else you want to call it (`konsole`, `consola`, `consolee`)
 
-#### You may replace your original `console` variable...
-
-```
-const console = require('colorful-console-logger');
-```
-
-...if you're daring enough. This worked fine on Node.js v10+. But this has not been tested on other browsers. If you happen to test this on all devices, please let us know if it worked consistently!  
-HOWEVER, DO CONSIDER. This console logger makes very bright colors. Also you may want to hook it up to cloud or file logging. So, it might make sense to NEVER overwrite your original **`console`** even if you can. You could use **`console.log`** to print out standard temporary messages, and use **`cconsole.log`** to print out colorful eye-catching messages that get special treatment like saving to cloud or file.
 
 ##
 
