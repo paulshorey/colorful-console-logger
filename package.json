@@ -5,5 +5,22 @@
   "description": "Local module, import as a node module path. Install with `npm link ./path/to/here`",
   "private": false,
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.1"
+  },
+  "scripts": {
+    "build": "parcel build ./index.js"
+  },
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "app": "dist/index.js",
+  "appModern": "dist/index.js",
+  "targets": {
+    "app": {
+      "engines": {
+        "browsers": "> 0.25%"
+      }
+    }
+  }
 }
