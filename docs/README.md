@@ -1,12 +1,14 @@
-![Example screenshot](examples/node--parse-str.png)
+# Add color to your console messages
 
-# No setup required. No dependencies. Very extensible.
+No dependencies. No setup required. Easily integrate with Cloud logging (LogDNA, etc). Visually group similar types of logs in the terminal. Show a conscice file/line trace for each message - so you can actually find where it's originating without looking through the entire codebase. More coming soon.
 
-[![npm package](https://img.shields.io/npm/v/colorful-console-logger.svg)](https://www.npmjs.com/package/colorful-console-logger)
+![Example screenshot](https://github.com/paulshorey/colorful-console-logger/blob/main/docs/examples/node--parse-str.png)
 
 Works on both Node.js and in Browser. Does not work well inside IDEs like CodePen.io. Scroll down for browser usage. This is code still experimental and will change. Do **not** install `@latest`, but stick to a well-tested current version.
 
 This package is exported as CJS (CommonJS) by default. To use ESM (ES MODULES), simply change all `require` lines to `import`, and append `.mjs` extension after the filename. If filename is not specified, use `index.mjs`.
+
+[![npm package](https://img.shields.io/npm/v/colorful-console-logger.svg)](https://www.npmjs.com/package/colorful-console-logger)
 
 
 ##
