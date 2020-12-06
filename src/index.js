@@ -17,7 +17,7 @@ import CConsoleLog from "./function/CConsoleLog"
  *    Ex: {log:function(){}, info:function(){}, etc}
  *    Tested, and works well with LogDNA. `options.logToCloud = logdna.createLogger()`
  */
-const cconsoleInit = function(options) {
+const cconsoleInit = function(options={}) {
   // optionally, pass log-To-Cloud versions of each log action (log,info,error,etc.)
   let { logToCloud = {}, useTrace = true, useColor = false } = options
   // so different actions (log/info/debug/etc) can communicate with eachother:

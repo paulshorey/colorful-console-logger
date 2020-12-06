@@ -1,8 +1,8 @@
-import cconsole from "./src/index.js"
+import cconsoleInit from "./src/index.js"
 
 
 if (typeof window === 'object') {
-  window.cconsole = cconsole
+  window.cconsole = cconsoleInit()
 }
 
-export default cconsole
+export default cconsoleInit
