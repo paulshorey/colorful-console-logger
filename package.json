@@ -11,11 +11,8 @@
   "scripts": {
     "build": "parcel build ./index.js"
   },
-  "main": "index.js",
   "author": "",
   "license": "ISC",
-  "app": "dist/index.js",
-  "appModern": "dist/index.js",
   "targets": {
     "app": {
       "engines": {
