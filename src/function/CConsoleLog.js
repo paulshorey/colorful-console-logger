@@ -13,13 +13,16 @@ if (NODEJSCOLORS && process.execArgv.join().includes("--inspect")) {
  */
 export default function () {
   let args = [...arguments]
+  // optionally, pass log-To-Cloud versions of each log action (log,info,error,etc.)
+  if (!this.options) this.options={}
+  let { logToCloud = {}, useTrace = false, useColor = true, separateTypes = true } = this.options
 
   /*
-   * optional:
+   * option:
    * trace file:line, where log originated
    */
   let trace = ""
-  if (this.useTrace) {
+  if (useTrace) {
     let stack = []
     let err = new Error()
     if (err.stack) {
@@ -39,7 +42,6 @@ export default function () {
    */
   let hasError = false
   let a = 0
-  let a_is_string = []
   while (a < args.length) {
     // if first argument is string, give it a colon ": "
     if (a === 0 && typeof args[a] === "string") {
@@ -49,7 +51,6 @@ export default function () {
         args[a] += " "
       }
     }
-
     // fix object from being printed as "[object Object]"
     if (typeof args[a] === "object") {
       if (args[a] instanceof Error) {
@@ -68,28 +69,6 @@ export default function () {
         args[a] = JSON.parse(JSON.stringify(destroyCircular(args[a], [])))
       }
     }
-
-    // consolidate simple types into one, if color1ed,
-    // so all messages will be displayed in color1
-    // else if (
-    //   color1 &&
-    //   (typeof args[a] === "string" ||
-    //     typeof args[a] === "number" ||
-    //     typeof args[a] === "boolean" ||
-    //     typeof args[a] === "undefined")
-    // ) {
-    //   // remember this if check for next time
-    //   a_is_string[a] = true
-    //   // check previous, if same type
-    //   if (a_is_string[a - 1]) {
-    //     // consolidate current into previous value
-    //     args[a - 1] += ", " + args[a]
-    //     // delete current
-    //     args.splice(a, 1)
-    //     a--
-    //   }
-    // }
-    // next
     a++
   }
 
@@ -117,9 +96,9 @@ export default function () {
   let action = this.action
   let color1 = ""
   let color2 = ""
-  if (this.useColor && typeof args[0] === "string") {
+  if (useColor && typeof args[0] === "string") {
     /*
-     * color for CLI / Terminal
+     * use by NODEJS in terminal
      */
     if (NODEJSCOLORS) {
       switch (this.action) {
@@ -149,7 +128,7 @@ export default function () {
       }
     } else {
       /*
-       * color for browser devtools
+       * for use in BROWSER
        */
       switch (action) {
         case "error":
@@ -197,12 +176,19 @@ export default function () {
   }
 
   /*
+   * Add space between different types (groups) of messages
+   *    TODO: maybe upgrade this to use console.group in browser
+   */
+  if (separateTypes) {
+    if (action + this.action !== this.sharedContext.last_action) {
+      console.log("")
+    }
+  }
+
+  /*
    * Log message to console
    * use specified action (log, info, debug, warn, etc)
    */
-  if (action + this.action !== this.sharedContext.last_action) {
-    console.log("")
-  }
   // log color
   if (color1) {
     if (trace) {
@@ -225,8 +211,8 @@ export default function () {
   /*
    * Log original content to cloud
    */
-  if (this.logToCloud) {
-    this.logToCloud(...arguments, trace)
+  if (logToCloud[action]) {
+    logToCloud[action](...arguments, trace)
   }
 
   /*

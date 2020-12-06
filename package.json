@@ -9,7 +9,7 @@
     "parcel": "^2.0.0-beta.1"
   },
   "scripts": {
-    "build": "parcel build ./index.js"
+    "build": "rm -rf .parcel-cache && parcel build ./index.js ./init.js"
   },
   "author": "",
   "license": "ISC",
