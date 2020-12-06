@@ -2,7 +2,7 @@
 
 No dependencies. No setup required. Easily integrate with Cloud logging (LogDNA, etc). Visually group similar types of logs in the terminal. Show a conscice file/line trace for each message - so you can actually find where it's originating without looking through the entire codebase. More coming soon.
 
-![Example screenshot](examples/node--parse-str.png)
+![Example screenshot](docs/examples/node--parse-str.png)
 
 Works on both Node.js and in Browser. Does not work well inside IDEs like CodePen.io. Scroll down for browser usage. This is code still experimental and will change. Do **not** install `@latest`, but stick to a well-tested current version.
 
