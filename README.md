@@ -1,51 +1,68 @@
 # No setup required. No dependencies. Very extensible.
 
-Works on both Node.js and in Browser. Does not work well inside IDEs like CodePen.io. Scroll down for browser usage.
+[![npm package](https://img.shields.io/npm/v/colorful-console-logger.svg)](https://www.npmjs.com/package/colorful-console-logger)
 
-# Use in Node.js (log to terminal):
+Works on both Node.js and in Browser. Does not work well inside IDEs like CodePen.io. Scroll down for browser usage.
+Should work for both ESM (ES Modules) and CJS (Common JS), though it is not tested for CJS! Please contact me if does not work.
+This is experimental and not stable code. Do **not** install `@latest`. When upgrading to a higher version, watch out for breaking changes!
+
+##
+
+# Use in Node.js (log to terminal)
 
 ### 1. Import it:
 
 ```
-const cconsole = require('colorful-console-logger');
-```
-
-### 2. Use it:
-
-```
-cconsole.log('no special colors');
-cconsole.info('light blue (teal/aqua) background');
-cconsole.warn('this is a warning, yellow/orange background');
-cconsole.error('Error: bright red background, yellow text');
+const cconsole = require('colorful-console-logger/cconsole');
 ```
 
 Import it to whatever variable you wish to call it (`konsole`, `consola`, `consolee`)
 
-#### Once you required/imported it, go ahead and use it same as the normal console:
+
+### 2. Use it:
 
 ```
 cconsole.time();
 cconsole.clear();
-cconsole.log("TEST 55555: 'log'", {testObject: "testObject"});
-cconsole.info("TEST 55555: 'info'", {testObject: "testObject"});
-cconsole.warn("TEST 55555: 'warn'", {testObject: "testObject"});
+cconsole.log('no special colors');
+cconsole.info('light blue (teal/aqua) background');
+cconsole.warn('this is a warning, yellow/orange background');
+cconsole.error('Error: bright red background, yellow text');
+cconsole.trace('TEST log trace');
+cconsole.error(new Error('TEST log error'));
 cconsole.table([[1, 2, 3, 4, 5], ['a', 'b', 'c', 'd', 'e']]);
-cconsole.trace('TEST 55555 log trace');
-cconsole.error(new Error('TEST 55555 log error'));
 cconsole.timeEnd();
 ```
 
+### 3. Advanced usage:
+
+```
+const cconsoleInit = require('colorful-console-logger');
+
+const cconsole = cconsoleInit({
+  useTrace: true,
+  useColor: true,
+  logToCloud: {
+    log: customCloudLogFunction,
+    info: customCloudInfoFunction,
+    warn: customCloudWarnFunction,
+    error: customCloudErrorFunction
+  }
+})
+```
 
 
-# Usage in browser
+##
+
+# Use in browser
 
 
 ## Auto-init with default options:
 
 ### 1. Import it:
 ```
-<script src="https://raw.githubusercontent.com/paulshorey/colorful-console-logger/main/dist/index.js"></script>
-<!-- this script will add cconsole variable to your window -->
+<script src="https://raw.githubusercontent.com/paulshorey/colorful-console-logger/main/dist/cconsole.js"></script>
+<!-- this script will add window.cconsole variable to your webpage -->
 ```
 
 ### 2. Use it:
@@ -55,44 +72,27 @@ cconcole.warn('this message will have background yellow')
 cconcole.error('this message will have background red with yellow text')
 ```
 
-## Customize
+### 3. Advanced usage:
 
-### 1. Import it:
 ```
-<!-- notice script name is "init.js", not "index.js" -->
-<script src="https://raw.githubusercontent.com/paulshorey/colorful-console-logger/main/dist/init.js"></script>
-<!-- this script will add cconsoleInit variable to your window -->
-```
+<script src="https://raw.githubusercontent.com/paulshorey/colorful-console-logger/main/dist/cconsoleInit.js"></script>
+<!-- this script will add window.cconsoleInit variable to your webpage -->
 
-### 2. Initiate it with custom options:
-```
-cconsole = cconsoleInit({
+const cconsole = cconsoleInit({
   useTrace: true,
   useColor: true,
   logToCloud: {
-    log: cloudConsoleLog,
-    info: cloudConsoleInfo,
-    warn: cloudConsoleWarn,
-    error: cloudConsoleError
+    log: customCloudLogFunction,
+    info: customCloudInfoFunction,
+    warn: customCloudWarnFunction,
+    error: customCloudErrorFunction
   }
 })
-```
 
-### 3. Use it:
-```
 cconcole.info('this message will have background light blue, and will log to your cloud provider')
 ```
 
-## Usage in browser (auto-init with default options):
 
-### 1. Import it:
-```
-<script src="https://raw.githubusercontent.com/paulshorey/colorful-console-logger/main/dist/init.js"></script>
-```
+# About
 
-### 2. Use it:
-```
-cconcole.info('this message will have background light blue')
-cconcole.warn('this message will have background yellow')
-cconcole.error('this message will have background red with yellow text')
-```
+Made by Paul for projects listed on PaulShorey.com, and for future development. This is a work in progress.

@@ -1,27 +1,28 @@
 {
   "name": "colorful-console-logger",
-  "version": "0.1.1",
-  "description": "Local module, import as a node module path. Install with `npm link ./path/to/here`",
+  "version": "0.1.2",
+  "description": "Alpha. Experimental. Download and install as local module. Install with `npm link ./path/to/folder`",
   "private": false,
   "author": "Paul Shorey <paulshorey.com>",
   "license": "ISC",
-
-  "dependencies": {},
-  "devDependencies": {
-    "parcel": "^2.0.0-beta.1"
+  "dependencies": {
+    "parcel": "^1.10.3"
   },
+  "devDependencies": {},
   "scripts": {
-    "build": "rm -rf .parcel-cache && parcel build cconsole.js cconsoleInit.js"
+    "build": "rm -rf .parcel-cache && parcel build cconsole.js cconsoleInit.js",
+    "parcel_v2_build": "npm run before_parcel && rm -rf .parcel-cache && parcel build cconsole.js cconsoleInit.js & npm run before_parcel",
+    "parcel_v2_before": "sed -i '' 's/\"main\":/\"xmain\":/' package.json && sed -i '' 's/\"module\":/\"xmodule\":/' package.json",
+    "parcel_v2_after": "sed -i '' 's/\"xmain\":/\"main\":/' package.json && sed -i '' 's/\"xmodule\":/\"module\":/' package.json"
   },
   "targets": {
     "app": {
       "engines": {
-        "browsers": "> 0.25%"
+        "browsers": "> 0.75%"
       }
     }
   },
-
   "type": "module",
-  "main": "cjs.js",
-  "module": "esm.js"
+  "module": "index.js",
+  "main": "cjs.js"
 }
