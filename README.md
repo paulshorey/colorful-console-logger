@@ -1,11 +1,8 @@
 # No setup required. No dependencies. Very extensible.
 
-You can haz configuration options if you want them. Scroll down to learn more.
-For basic use, simply `npm install colorful-console-logger` and import.
+Works on both Node.js and in Browser. Does not work well inside IDEs like CodePen.io. Scroll down for browser usage.
 
-##
-
-## It does NOT replace your `console`:
+# Use in Node.js (log to terminal):
 
 ### 1. Import it:
 
@@ -38,84 +35,64 @@ cconsole.error(new Error('TEST 55555 log error'));
 cconsole.timeEnd();
 ```
 
-##
 
-## Optional configuration options:
 
-If you want to get fancy, and you probably should ~ here are some extra options.  
-After you've required/imported the cconsole variable, call its secret `config` method.  
-You may change options anytime at runtime.
+# Usage in browser
 
-#### 1. Catch Exceptions
-Make truthy to log which file/line number the log came from:
 
+## Auto-init with default options:
+
+### 1. Import it:
 ```
-cconsole.config({
-    catchExceptions: true, // default false
-});
+<script src="https://raw.githubusercontent.com/paulshorey/colorful-console-logger/main/dist/index.js"></script>
+<!-- this script will add cconsole variable to your window -->
 ```
 
-Above option will execute this code (below). It will affect your entire codebase by implementing this:
-
+### 2. Use it:
 ```
-process.on('uncaughtException', (err) => {
-    console.error('Fatal error!', err);
-});
-```
-
-All this does is print an error to the console before your application crashes and burns.  
-If you specify a `callbackOnError()`, below, then you will also be able to do other stuff before the application exits.
-
-#### 2. Execute callback function on error
-
-```
-cconsole.config({
-    callbackOnError: function(arguments){
-        // `arguments` is an array of arguments you passed to `cconsole.error`
-        // Do whatever you want here. You're passing in this custom function.
-        // In back-end Node.js, you may want to call `execute("pm2 restart all")`
-        // You may want to add custom cloud-logging or file-system logging here
-    })
-});
+cconcole.info('this message will have background light blue')
+cconcole.warn('this message will have background yellow')
+cconcole.error('this message will have background red with yellow text')
 ```
 
-Above option will execute BEFORE `process.exit();` due to the optional `exitOnError` option.  
-Above option will execute AFTER the error message has been output to the console.
+## Customize
 
-#### 3. Pre-process arguments
-
+### 1. Import it:
 ```
-cconsole.config({
-    preprocessArguments: function(arguments){
-        // Defaults to null
-        // Do whatever you want here. You're passing in this custom function.
-        // For example, you may loop through each arguments property, and add some prefix or timestamp
-    })
-});
+<!-- notice script name is "init.js", not "index.js" -->
+<script src="https://raw.githubusercontent.com/paulshorey/colorful-console-logger/main/dist/init.js"></script>
+<!-- this script will add cconsoleInit variable to your window -->
 ```
 
-Above opton will execute BEFORE the message has been output to the console.  
-In fact, cconsole serializes error messages as text to better print out in the console. This option executes BEFORE this serialization.  
-Inside your function, access the "type" of console.log this is ("info", "warn", etc) with **`this.action`**.  
-You may want to use this to send these console logs to some custom "cloud" logger like Winston or Loggly.
-
-#### Do them all at the same time
-
+### 2. Initiate it with custom options:
 ```
-cconsole.config({
-    catchExceptions: true,
-    callbackOnError: function(arguments){
-        // call some bash script
-        execute('pm2 stop all');
-    }),
-    preprocessArguments: function(arguments){
-        // add prefix
-        for (let a in arguments) {
-            arguments[a] = Date.now() +' ~ '+ arguments[a];
-        }
-        // log to the cloud
-        logDNA[this.action](arguments);
-    })
-});
+cconsole = cconsoleInit({
+  useTrace: true,
+  useColor: true,
+  logToCloud: {
+    log: cloudConsoleLog,
+    info: cloudConsoleInfo,
+    warn: cloudConsoleWarn,
+    error: cloudConsoleError
+  }
+})
 ```
 
+### 3. Use it:
+```
+cconcole.info('this message will have background light blue, and will log to your cloud provider')
+```
+
+## Usage in browser (auto-init with default options):
+
+### 1. Import it:
+```
+<script src="https://raw.githubusercontent.com/paulshorey/colorful-console-logger/main/dist/init.js"></script>
+```
+
+### 2. Use it:
+```
+cconcole.info('this message will have background light blue')
+cconcole.warn('this message will have background yellow')
+cconcole.error('this message will have background red with yellow text')
+```

@@ -1,23 +1,27 @@
 {
   "name": "colorful-console-logger",
-  "type": "module",
   "version": "0.1.1",
   "description": "Local module, import as a node module path. Install with `npm link ./path/to/here`",
   "private": false,
+  "author": "Paul Shorey <paulshorey.com>",
+  "license": "ISC",
+
   "dependencies": {},
   "devDependencies": {
     "parcel": "^2.0.0-beta.1"
   },
   "scripts": {
-    "build": "rm -rf .parcel-cache && parcel build ./index.js ./init.js"
+    "build": "rm -rf .parcel-cache && parcel build cconsole.js cconsoleInit.js"
   },
-  "author": "",
-  "license": "ISC",
   "targets": {
     "app": {
       "engines": {
         "browsers": "> 0.25%"
       }
     }
-  }
+  },
+
+  "type": "module",
+  "main": "cjs.js",
+  "module": "esm.js"
 }

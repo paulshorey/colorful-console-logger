@@ -7,7 +7,7 @@
  * 100 - 110 ms for regular console
  * 125 - 135 ms for colorful console ( 19% slower )
  */
-const console = require('./index.js');
+const console = require('./cconsole.js');
 
 /*
  * Application code below
