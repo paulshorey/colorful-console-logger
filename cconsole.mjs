@@ -1,10 +1,10 @@
 /*
  * This is for use in Browser - however it will also work in Node (ESM) including Webpack
  */
-const cconsoleInit = require("./src/index.js")
+import cconsoleInit from "./dist/cconsoleInit.js"
 
 if (typeof window === 'object') {
-  window.cconsole = cconsoleInit
+  window.cconsole = cconsoleInit()
 }
 
-module.exports = cconsoleInit
+export default cconsoleInit()

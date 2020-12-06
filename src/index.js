@@ -1,4 +1,4 @@
-import CConsoleLog from "./function/CConsoleLog"
+const CConsoleLog = require( "./function/CConsoleLog")
 
 /**
  * Log to console, and optionally to your custom cloud functions
@@ -63,4 +63,4 @@ const cconsoleInit = function(options={}) {
 /*
  * Export cconsole
  */
-export default cconsoleInit
+module.exports = cconsoleInit

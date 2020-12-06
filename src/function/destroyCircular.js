@@ -35,4 +35,4 @@ const destroyCircular = (from, seen) => {
   }
   return to
 }
-export default destroyCircular
+module.exports = destroyCircular

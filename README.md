@@ -2,13 +2,14 @@
 
 [![npm package](https://img.shields.io/npm/v/colorful-console-logger.svg)](https://www.npmjs.com/package/colorful-console-logger)
 
-Works on both Node.js and in Browser. Does not work well inside IDEs like CodePen.io. Scroll down for browser usage.
-Should work for both ESM (ES Modules) and CJS (Common JS), though it is not tested for CJS! Please contact me if does not work.
-This is experimental and not stable code. Do **not** install `@latest`. When upgrading to a higher version, watch out for breaking changes!
+Works on both Node.js and in Browser. Does not work well inside IDEs like CodePen.io. Scroll down for browser usage. This is code still experimental and will change. Do **not** install `@latest`, but stick to a well-tested current version.
+
+This package is exported as CJS (CommonJS) by default. To use ESM (ES MODULES), simply change all `require` lines to `import`, and append `.mjs` extension after the filename. If filename is not specified, use `index.mjs`.
+
 
 ##
 
-# Use in Node.js (log to terminal)
+# Use in Node.js - ESM (ES Modules)
 
 ### 1. Import it:
 

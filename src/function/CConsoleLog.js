@@ -1,17 +1,17 @@
-import destroyCircular from "./destroyCircular"
-import serializeError from "./serializeError"
+const destroyCircular = require( "./destroyCircular")
+const serializeError = require( "./serializeError")
 
 // use "browser" colors if in browser
-let NODEJSCOLORS = typeof window !== "object"
+let NODEJSCOLORS = typeof window !== "object" && typeof process==="object"
 // also use "browser" colors if in NodeJS with "--inspect" or "--inspect-brk" flag
-if (NODEJSCOLORS && process.execArgv.join().includes("--inspect")) {
-  NODEJSCOLORS = false
-}
+// if (NODEJSCOLORS && process.execArgv.join().includes("--inspect")) {
+//   NODEJSCOLORS = false
+// }
 
 /*
  * Log to console
  */
-export default function () {
+module.exports = function () {
   let args = [...arguments]
   // optionally, pass log-To-Cloud versions of each log action (log,info,error,etc.)
   if (!this.options) this.options={}

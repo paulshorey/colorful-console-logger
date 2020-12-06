@@ -1,6 +1,6 @@
-import destroyCircular from './destroyCircular'
+const destroyCircular = require('./destroyCircular')
 
-export default (value) => {
+module.exports = (value) => {
   if (typeof value === 'object') {
     return destroyCircular(value, [])
   }

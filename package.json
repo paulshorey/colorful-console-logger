@@ -1,6 +1,6 @@
 {
   "name": "colorful-console-logger",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Alpha. Experimental. Download and install as local module. Install with `npm link ./path/to/folder`",
   "private": false,
   "author": "Paul Shorey <paulshorey.com>",
@@ -22,7 +22,11 @@
       }
     }
   },
-  "type": "module",
-  "module": "index.js",
-  "main": "cjs.js"
+  "type": "commonjs",
+  "main": "index.js",
+  "module": "index.mjs",
+  "exports": {
+    "default": "./index.js",
+    "module": "./index.mjs"
+  }
 }
