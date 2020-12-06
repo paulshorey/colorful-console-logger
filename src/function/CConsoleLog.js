@@ -15,7 +15,7 @@ module.exports = function () {
   let args = [...arguments]
   // optionally, pass log-To-Cloud versions of each log action (log,info,error,etc.)
   if (!this.options) this.options={}
-  let { logToCloud = {}, useTrace = false, useColor = true, separateTypes = true } = this.options
+  let { logToCloud = {}, useTrace = false, useColor = true, separateTypes = false } = this.options
 
   /*
    * option:
