@@ -104,4 +104,4 @@ cconcole.info('this message will have background light blue, and will log to you
 
 # About
 
-Made by Paul for projects listed on PaulShorey.com, for future projects, for future clients and employers, for everyone. This is a work in progress.
+Made by [Paul Shorey](https://paulshorey.com) for personal projects, for future clients and employers, for everyone. This is a work in progress.
