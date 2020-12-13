@@ -4,7 +4,7 @@ No dependencies. No setup required. Easily integrate with Cloud logging (LogDNA,
 
 ![Example screenshot](docs/examples/node--parse-str.png)
 
-Works on both Node.js and in Browser. Does not work well inside IDEs like CodePen.io. Scroll down for browser usage. This is code still experimental and will change. Do **not** install `@latest`, but stick to a well-tested current version.
+Works on both Node.js and in Browser. Colors do not work inside IDEs like CodePen.io. Scroll down for browser usage. This is code still experimental and will change until `version 1`. Do **not** install `@latest`, but stick to a well-tested current version.
 
 This package is exported as CJS (CommonJS) by default. To use ESM (ES MODULES), simply change all `require` lines to `import`, and append `.mjs` extension after the filename. If filename is not specified, use `index.mjs`.
 
