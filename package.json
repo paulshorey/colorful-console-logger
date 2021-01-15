@@ -1,6 +1,6 @@
 {
   "name": "colorful-console-logger",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Alpha. Experimental. Download and install as local module. Install with `npm link ./path/to/folder`",
   "private": false,
   "author": "Paul Shorey <paulshorey.com>",
