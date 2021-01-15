@@ -40,7 +40,7 @@ module.exports = function () {
   /*
    * optimize message view
    */
-  let hasError = false
+  // let hasError = false
   let a = 0
   while (a < args.length) {
     // if first argument is string, give it a colon ": "
@@ -55,14 +55,16 @@ module.exports = function () {
     if (typeof args[a] === "object") {
       if (args[a] instanceof Error) {
         // error object
-        hasError = true
+        // hasError = true
         try {
           // going to assume this is an Error
           args[a] = serializeError(args[a])
           if (typeof args[a] === "object") {
             args[a] = serializeError(args[a].stack)
           }
-        } catch (e) {}
+        } catch (e) {
+          console.error(e)
+        }
       } else {
         // regular object
         // serialize so it does not display changes made after log has printed
