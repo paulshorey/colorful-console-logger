@@ -1,6 +1,6 @@
 {
   "name": "colorful-console-logger",
-  "version": "0.1.42",
+  "version": "0.2.00",
   "description": "Alpha. Experimental. Download and install as local module. Install with `npm link ./path/to/folder`",
   "private": false,
   "author": "Paul Shorey <paulshorey.com>",
@@ -21,7 +21,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint && npm run test && git add .",
-      "post-commit": "git push"
+      "post-commit": "echo '\n\nPUSHING to remote' && git push"
     }
   },
   "targets": {
