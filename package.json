@@ -17,7 +17,8 @@
     "build": "rm -rf .parcel-cache && parcel build ./src/cconsole*.js",
     "lint": "eslint src --max-warnings=0",
     "test": "ava",
-    "test:watch": "ava --watch --verbose"
+    "test:watch": "ava --watch --verbose",
+    "publish": "npm version patch && git add . && npm commit && npm push && npm publish"
   },
   "husky": {
     "hooks": {

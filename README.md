@@ -108,7 +108,7 @@ This will run Parcel with `--watch` flag. Changes from `./src` folder will be wr
 ### Test:
 `npm run test` No coverage for now. It runs the examples (`./examples/cconsole*.js` files). It's difficult to test console logs. So, this does not test what colors (if any) are printing out, or if all the options are working. Just checks if the code threw an error, or if it ran successfully.
 
-### Commit to Git repo:
+### Build, commit, push:
 `git commit` triggers "pre-commit" hook which runs linting and testing, and fails if something fails. If successful, then it will `npm run build` and `git add .`, then `git push`.
 
 
