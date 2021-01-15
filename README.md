@@ -6,26 +6,22 @@ No dependencies. No setup required. Easily integrate with Cloud logging (LogDNA,
 
 Works on both Node.js and in Browser. Colors do not work inside IDEs like CodePen.io. Scroll down for browser usage. This is code still experimental and will change until `version 1`. Do **not** install `@latest`, but stick to a well-tested current version.
 
-This package is exported as CJS (CommonJS) by default. To use ESM (ES Modules), just append `.mjs` extension after the filename. If filename is not specified, use `index.mjs`.
-
 [![npm package](https://img.shields.io/npm/v/colorful-console-logger.svg)](https://www.npmjs.com/package/colorful-console-logger)
 
 
 ##
 
-# Use in Node.js - ESM (ES Modules)
+# Use in Node.js (CommonJS or ES Modules)
 
 ### 1. Import it:
-
 ```
-const cconsole = require('colorful-console-logger/cconsole');
+const cconsole = require('colorful-console-logger');
+// or use import for ESM - this is packaged for both
 ```
-
-Name it to whatever you want (`konsole`, `consola`, `consolee`)
+Name it whatever you want (`konsole`, `consola`, `consolee`)
 
 
 ### 2. Use it:
-
 ```
 cconsole.time();
 cconsole.clear();
@@ -38,14 +34,13 @@ cconsole.error(new Error('TEST log error'));
 cconsole.table([[1, 2, 3, 4, 5], ['a', 'b', 'c', 'd', 'e']]);
 cconsole.timeEnd();
 ```
+See examples in `./examples` folder.
 
 ### 3. Advanced usage:
 
 ```
 const cconsoleInit = require('colorful-console-logger/cconsoleInit');
-// require('colorful-console-logger') gets the same thing
 
-// use it anywhere
 globals['cconsole'] = cconsoleInit({
   useTrace: true, // show file and line-number where the console was called from
   useColor: true, // add a splash of color, to find the info, warn, or debug more easily
@@ -57,6 +52,7 @@ globals['cconsole'] = cconsoleInit({
     error: customCloudErrorFunction
   }
 })
+// the globals variable is just a suggestion, so you don't have to keep initiating it in every file
 ```
 
 
