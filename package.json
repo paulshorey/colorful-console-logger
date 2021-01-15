@@ -1,6 +1,6 @@
 {
   "name": "colorful-console-logger",
-  "version": "0.2.00",
+  "version": "0.2.02",
   "description": "Alpha. Experimental. Download and install as local module. Install with `npm link ./path/to/folder`",
   "private": false,
   "author": "Paul Shorey <paulshorey.com>",
@@ -13,14 +13,15 @@
     "parcel": "^1.10.3"
   },
   "scripts": {
+    "dev": "npm run build -- --watch",
     "build": "rm -rf .parcel-cache && parcel build ./src/cconsole*.js",
     "lint": "eslint src --max-warnings=0",
-    "test": "ava --verbose",
+    "test": "ava",
     "test:watch": "ava --watch --verbose"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run test && git add .",
+      "pre-commit": "npm run lint && npm run test && npm run build && git add .",
       "post-commit": "echo '\n\nPUSHING to remote' && git push"
     }
   },
@@ -32,6 +33,6 @@
     }
   },
   "type": "commonjs",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js"
+  "main": "./dist/cconsoleinit.js",
+  "module": "./dist/cconsoleinit.js"
 }

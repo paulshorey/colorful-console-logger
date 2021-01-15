@@ -13,10 +13,11 @@ Works on both Node.js and in Browser. Colors do not work inside IDEs like CodePe
 
 # Use in Node.js (CommonJS or ES Modules)
 
+### See example usage in `./examples` folder!
+
 ### 1. Import it:
 ```
 const cconsole = require('colorful-console-logger');
-// or use import for ESM - this is packaged for both
 ```
 Name it whatever you want (`konsole`, `consola`, `consolee`)
 
@@ -34,7 +35,6 @@ cconsole.error(new Error('TEST log error'));
 cconsole.table([[1, 2, 3, 4, 5], ['a', 'b', 'c', 'd', 'e']]);
 cconsole.timeEnd();
 ```
-See examples in `./examples` folder.
 
 ### 3. Advanced usage:
 
@@ -97,6 +97,25 @@ const cconsole = cconsoleInit({
 cconcole.info('this message will have background light blue, and will log to your cloud provider')
 ```
 
+##
+
+# Development
+
+### Run dev:
+`npm install` && `npm run dev`
+This will run Parcel with `--watch` flag. Changes from `./src` folder will be written to `./dist`. Experiment in `./examples` folder.
+
+### Test:
+`npm run test` No coverage for now. It runs the examples (`./examples/cconsole*.js` files). It's difficult to test console logs. So, this does not test what colors (if any) are printing out, or if all the options are working. Just checks if the code threw an error, or if it ran successfully.
+
+### Commit to Git repo:
+`git commit` triggers "pre-commit" hook which runs linting and testing, and fails if something fails.
+
+### Quirks:
+`git commit triggers also `git add .` on "pre-commit" and `git push` on "post-commit". I like it. Maybe you don't. FYI.
+
+
+##
 
 # About
 

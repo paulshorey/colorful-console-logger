@@ -63,7 +63,7 @@ module.exports = function () {
             args[a] = serializeError(args[a].stack)
           }
         } catch (e) {
-          console.error(e)
+          // console.error(e)
         }
       } else {
         // regular object
