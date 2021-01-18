@@ -1,6 +1,6 @@
 {
   "name": "colorful-console-logger",
-  "version": "0.2.02",
+  "version": "0.2.03",
   "description": "Alpha. Experimental. Download and install as local module. Install with `npm link ./path/to/folder`",
   "private": false,
   "author": "Paul Shorey <paulshorey.com>",
@@ -34,6 +34,6 @@
     }
   },
   "type": "commonjs",
-  "main": "./dist/cconsoleinit.js",
-  "module": "./dist/cconsoleinit.js"
+  "main": "./dist/cconsole.js",
+  "module": "./dist/cconsole.js"
 }
