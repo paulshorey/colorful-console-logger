@@ -6,7 +6,7 @@ No dependencies. No setup required. Easily integrate with Cloud logging (LogDNA,
 
 Works on both Node.js and in Browser. Colors do not work inside IDEs like CodePen.io. Scroll down for browser usage. This is code still experimental and will change until `version 1`. Do **not** install `@latest`, but stick to a well-tested current version.
 
-[![npm package](https://img.shields.io/npm/v/colorful-console-logger.svg)](https://www.npmjs.com/package/colorful-console-logger)  ![testing in progress](coverage/badge-statements.svg) Currently in progress: testing, documentation, examples.
+[![npm package](https://img.shields.io/npm/v/colorful-console-logger.svg)](https://www.npmjs.com/package/colorful-console-logger)  ![testing in progress](coverage/badge-statements.svg)
 
 
 ##

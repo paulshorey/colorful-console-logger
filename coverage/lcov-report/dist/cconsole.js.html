@@ -73,19 +73,19 @@
 <a name='L14'></a><a href='#L14'>14</a>
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">parcelRequire=function(e,r,n,t){var i=<span class="branch-0 cbranch-no" title="branch not covered" >"function"==typeof parcelRequire&amp;&amp;parcelRequire,o</span>="function"==typeof require&amp;&amp;require;function u(n,t){if(!r[n]){if(!e[n])<span class="branch-0 cbranch-no" title="branch not covered" >{var f="function"==typeof parcelRequire&amp;&amp;parcelRequire;if(!t&amp;&amp;f)return f(n,!0);if(i)return i(n,!0);if(o&amp;&amp;"string"==typeof n)return o(n);var c=new Error("Cannot find module '"+n+"'");throw c.code="MODULE_NOT_FOUND",c}p.</span>resolve=function(r){return <span class="branch-0 cbranch-no" title="branch not covered" >e[n][1][r]||r},</span>p.cache={};var l=r[n]=new u.Module(n);e[n][0].call(l.exports,p,l,l.exports,this)}return r[n].exports;function p(e){return u(p.resolve(e))}}u.isParcelRequire=!0,u.Module=function(e){this.id=e,this.bundle=u,this.exports={}},u.modules=e,u.cache=r,u.parent=i,u.register=<span class="fstat-no" title="function not covered" >function(r,n){e[r]=[function(e,r){r.exports=n},{}]};f</span>or(var f=0;f&lt;n.length;f++)u(n[f]);if(n.length){var c=u(n[n.length-1]);<span class="branch-0 cbranch-no" title="branch not covered" >"object"==typeof exports&amp;&amp;"undefined"!=typeof module?module.exports=c:"function"==typeof define&amp;&amp;define.amd?define(function(){return c}):t&amp;&amp;(t</span>his[t]=c)}return u}({"67gq":[function(require,module,exports) {
 function r(t){return(r=<span class="branch-0 cbranch-no" title="branch not covered" >"function"==typeof Symbol&amp;&amp;"symbol"==typeof Symbol.iterator?function(r){return typeof r}:<span class="fstat-no" title="function not covered" >function(r){return r&amp;&amp;"function"==typeof Symbol&amp;&amp;r.constructor===Symbol&amp;&amp;r!==Symbol.prototype?"symbol":typeof r})(t</span></span>)}function t(r,t){return <span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >u(r)||i(r</span>,t)||e(r</span>,t)||n()}<span class="fstat-no" title="function not covered" >f</span>unction n(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}<span class="fstat-no" title="function not covered" >function e</span>(r,t){if(r){if("string"==typeof r)return o(r,t);var n=Object.prototype.toString.call(r).slice(8,-1);return"Object"===n&amp;&amp;r.constructor&amp;&amp;(n=r.constructor.name),"Map"===n||"Set"===n?Array.from(r):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?o(r,t):void 0}}<span class="fstat-no" title="function not covered" >function o</span>(r,t){(null==t||t&gt;r.length)&amp;&amp;(t=r.length);for(var n=0,e=new Array(t);n&lt;t;n++)e[n]=r[n];return e}<span class="fstat-no" title="function not covered" >function i</span>(r,t){if("undefined"!=typeof Symbol&amp;&amp;Symbol.iterator in Object(r)){var n=[],e=!0,o=!1,i=void 0;try{for(var u,a=r[Symbol.iterator]();!(e=(u=a.next()).done)&amp;&amp;(n.push(u.value),!t||n.length!==t);e=!0);}catch(l){o=!0,i=l}finally{try{e||null==a.return||a.return()}finally{if(o)throw i}}return n}}function u</span>(r){if(Array.isArray(r))return r}var a=function n(e,o){if(null==e)<span class="branch-0 cbranch-no" title="branch not covered" >return e</span>;var i=Array.isArray(e)?[]:{};o.push(e);for(var u=0,a=Object.entries(e);u&lt;a.length;u++){var l=t(a[u],2),c=l[0],f=l[1];"function"!=typeof f&amp;&amp;(f&amp;&amp;"object"===r(f)?<span class="branch-0 cbranch-no" title="branch not covered" >o.includes(e[c])?i[c]="[Circular]":i</span>[c]=n(e[c],o.slice()):i[c]=f)}for(var y=0,s=["name","message","stack","code"];y&lt;s.length;y++){var m=s[y];"string"==typeof e[m]&amp;&amp;(i[m]=e[m])}return i};module.exports=a;
@@ -109,7 +109,7 @@ var o=require("./function/CConsoleLog"),e=function(){var e=<span class="branch-0
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jan 19 2021 12:41:49 GMT-0500 (Eastern Standard Time)
+                at Tue Jan 19 2021 12:42:53 GMT-0500 (Eastern Standard Time)
             </div>
         </div>
         <script src="../prettify.js"></script>
