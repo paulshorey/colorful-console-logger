@@ -28,13 +28,13 @@ const cconsoleInit = function(options={}) {
     warn: CConsoleLog.bind({ action: "warn", options, sharedContext }),
     error_message: CConsoleLog.bind({ action: "error_message", options, sharedContext }),
     error: CConsoleLog.bind({ action: "error", options, sharedContext }),
-    table: CConsoleLog.bind({ action: "table", options, sharedContext }),
     trace: CConsoleLog.bind({ action: "trace", options, sharedContext }),
     success: CConsoleLog.bind({ action: "success", options, sharedContext }),
     subtle: CConsoleLog.bind({ action: "subtle", options, sharedContext }),
-    // pass-through (default) loggers (standard)
+    // pass-through system debugging loggers
     clear: console.clear,
     time: console.time,
+    table: console.table,
     timeEnd: console.timeEnd,
     timeLog: console.timeLog,
     assert: console.assert,

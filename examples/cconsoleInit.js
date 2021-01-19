@@ -1,7 +1,13 @@
 /*
  * For custom usage (you can set custom settings)
  */
-const cconsole = require("../dist/cconsole.js")
+const cconsoleInit = require("../dist/cconsoleInit.js")
+
+const cconsole = cconsoleInit({
+  useTrace: true, // show file and line-number where the console was called from
+  useColor: true, // add a splash of color, to find the info, warn, or debug more easily
+  separateTypes: true, // put a space between groups of similar types (logs, infos, warns)
+})
 
 cconsole.time();
 cconsole.clear();

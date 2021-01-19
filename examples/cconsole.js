@@ -3,7 +3,6 @@
  */
 const cconsole = require("../dist/cconsole.js")
 
-
 cconsole.time();
 cconsole.clear();
 

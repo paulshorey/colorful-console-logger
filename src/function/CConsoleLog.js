@@ -188,8 +188,7 @@ module.exports = function () {
   }
 
   /*
-   * Log message to console
-   * use specified action (log, info, debug, warn, etc)
+   * Add trace (file-name:line-number)
    */
   // log color
   if (color1) {
@@ -203,12 +202,13 @@ module.exports = function () {
   } else if (trace) {
     // no color1, trace
     args = [...args, trace]
-  } else {
-    // no color1, no trace
-    args = [...args]
   }
-  // log content
-  console[action](...args)
+
+  /*
+   * Log message to console
+   * use specified action (log, info, debug, warn, etc)
+   */
+    console[action](...args)
 
   /*
    * Log original content to cloud
