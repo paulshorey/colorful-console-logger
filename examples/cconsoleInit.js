@@ -1,7 +1,7 @@
 /*
  * For custom usage (you can set custom settings)
  */
-import cconsole from "../dist/cconsole.js"
+const cconsole = require("../dist/cconsole.js")
 
 cconsole.time();
 cconsole.clear();

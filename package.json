@@ -7,24 +7,27 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "ava": "^3.15.0",
+    "jest-coverage-badges": "^1.1.2",
+    "jest": "^26.6.3",
     "eslint": "^7.17.0",
     "husky": "^4.3.7",
     "parcel": "^1.10.3"
   },
   "scripts": {
-    "dev": "npm run build -- --watch",
     "build": "rm -rf .parcel-cache && parcel build ./src/cconsole*.js",
     "lint": "eslint src --max-warnings=0",
-    "test": "ava",
-    "test:watch": "ava --watch --verbose",
+    "dev": "npm run build -- --watch",
+    "test": "jest --coverage && jest-coverage-badges",
+    "test:watch": "jest --watch --verbose",
     "publish": "npm version patch && git add . && npm commit && npm push && npm publish"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run test && npm run build && git add .",
-      "post-commit": "echo '\n\nPUSHING to remote' && git push"
+      "pre-commit": "npm run lint && npm run test && npm run build && git add ."
     }
+  },
+  "husky-hooks-alt":{
+    "post-commit": "echo '\n\nPUSHING to remote' && git push"
   },
   "targets": {
     "app": {
