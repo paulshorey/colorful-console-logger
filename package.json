@@ -1,7 +1,7 @@
 {
   "name": "colorful-console-logger",
-  "version": "0.9.10",
-  "description": "Alpha. Experimental. Download and install as local module. Install with `npm link ./path/to/folder`",
+  "version": "1.0.1",
+  "description": "No dependencies. No setup required. Easily integrate with Cloud logging (LogDNA, etc). Visually group similar types of logs in the terminal. Show a concise file/line trace for each message - so you can actually find where it's originating without looking through the entire codebase.",
   "private": false,
   "author": "Paul Shorey <paulshorey.com>",
   "license": "ISC",
@@ -18,12 +18,11 @@
     "lint": "eslint src --max-warnings=0",
     "dev": "npm run build -- --watch",
     "test": "jest --coverage && jest-coverage-badges",
-    "test:watch": "jest --watch --verbose",
-    "publish": "npm version patch && git add . && npm commit && npm push && npm publish"
+    "test:watch": "jest --watch --verbose"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run test && npm run build && git add ."
+      "pre-commit": "npm version patch --no-git-tag-version && npm run lint && npm run test && npm run build && git add ."
     }
   },
   "husky-hooks-alt": {
