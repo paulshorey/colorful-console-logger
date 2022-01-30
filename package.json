@@ -1,6 +1,6 @@
 {
   "name": "colorful-console-logger",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "No dependencies. No setup required. Easily integrate with Cloud logging (LogDNA, etc). Visually group similar types of logs in the terminal. Show a concise file/line trace for each message - so you can actually find where it's originating without looking through the entire codebase.",
   "private": false,
   "author": "Paul Shorey <paulshorey.com>",
