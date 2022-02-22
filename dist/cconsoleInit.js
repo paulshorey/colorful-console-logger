@@ -1,16 +1,353 @@
-parcelRequire=function(e,r,n,t){var i="function"==typeof parcelRequire&&parcelRequire,o="function"==typeof require&&require;function u(n,t){if(!r[n]){if(!e[n]){var f="function"==typeof parcelRequire&&parcelRequire;if(!t&&f)return f(n,!0);if(i)return i(n,!0);if(o&&"string"==typeof n)return o(n);var c=new Error("Cannot find module '"+n+"'");throw c.code="MODULE_NOT_FOUND",c}p.resolve=function(r){return e[n][1][r]||r},p.cache={};var l=r[n]=new u.Module(n);e[n][0].call(l.exports,p,l,l.exports,this)}return r[n].exports;function p(e){return u(p.resolve(e))}}u.isParcelRequire=!0,u.Module=function(e){this.id=e,this.bundle=u,this.exports={}},u.modules=e,u.cache=r,u.parent=i,u.register=function(r,n){e[r]=[function(e,r){r.exports=n},{}]};for(var f=0;f<n.length;f++)u(n[f]);if(n.length){var c=u(n[n.length-1]);"object"==typeof exports&&"undefined"!=typeof module?module.exports=c:"function"==typeof define&&define.amd?define(function(){return c}):t&&(this[t]=c)}return u}({"67gq":[function(require,module,exports) {
-function r(t){return(r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(r){return typeof r}:function(r){return r&&"function"==typeof Symbol&&r.constructor===Symbol&&r!==Symbol.prototype?"symbol":typeof r})(t)}function t(r,t){return u(r)||i(r,t)||e(r,t)||n()}function n(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function e(r,t){if(r){if("string"==typeof r)return o(r,t);var n=Object.prototype.toString.call(r).slice(8,-1);return"Object"===n&&r.constructor&&(n=r.constructor.name),"Map"===n||"Set"===n?Array.from(r):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?o(r,t):void 0}}function o(r,t){(null==t||t>r.length)&&(t=r.length);for(var n=0,e=new Array(t);n<t;n++)e[n]=r[n];return e}function i(r,t){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(r)){var n=[],e=!0,o=!1,i=void 0;try{for(var u,a=r[Symbol.iterator]();!(e=(u=a.next()).done)&&(n.push(u.value),!t||n.length!==t);e=!0);}catch(l){o=!0,i=l}finally{try{e||null==a.return||a.return()}finally{if(o)throw i}}return n}}function u(r){if(Array.isArray(r))return r}var a=function n(e,o){if(null==e)return e;var i=Array.isArray(e)?[]:{};o.push(e);for(var u=0,a=Object.entries(e);u<a.length;u++){var l=t(a[u],2),c=l[0],f=l[1];"function"!=typeof f&&(f&&"object"===r(f)?o.includes(e[c])?i[c]="[Circular]":i[c]=n(e[c],o.slice()):i[c]=f)}for(var y=0,s=["name","message","stack","code"];y<s.length;y++){var m=s[y];"string"==typeof e[m]&&(i[m]=e[m])}return i};module.exports=a;
-},{}],"9p94":[function(require,module,exports) {
-function o(t){return(o="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(o){return typeof o}:function(o){return o&&"function"==typeof Symbol&&o.constructor===Symbol&&o!==Symbol.prototype?"symbol":typeof o})(t)}var t=require("./destroyCircular");module.exports=function(n){return"object"===o(n)?t(n,[]):"function"==typeof n?"[Function: ".concat(n.name||"anonymous","]"):n};
-},{"./destroyCircular":"67gq"}],"pBGv":[function(require,module,exports) {
+var $0eb1de57af9dcd86$exports = {};
+var $cf838c15c8b009ba$exports = {};
+var $f469a2c293347517$exports = {};
+var $9958aab2a7720a5d$exports = {};
+const $9958aab2a7720a5d$var$destroyCircular = (from, seen)=>{
+    // null seen as object
+    if (from === null || from === undefined) return from;
+    // setup output variable
+    const to = Array.isArray(from) ? [] : {
+    };
+    // reading
+    seen.push(from);
+    // iterate input
+    for (const [key, value] of Object.entries(from)){
+        if (typeof value === 'function') continue;
+        if (!value || typeof value !== 'object') {
+            to[key] = value;
+            continue;
+        }
+        if (!seen.includes(from[key])) {
+            to[key] = $9958aab2a7720a5d$var$destroyCircular(from[key], seen.slice());
+            continue;
+        }
+        to[key] = '[Circular]';
+    }
+    const commonProperties = [
+        'name',
+        'message',
+        'stack',
+        'code'
+    ];
+    for (const property of commonProperties)if (typeof from[property] === 'string') to[property] = from[property];
+    return to;
+};
+$9958aab2a7720a5d$exports = $9958aab2a7720a5d$var$destroyCircular;
 
-var t,e,n=module.exports={};function r(){throw new Error("setTimeout has not been defined")}function o(){throw new Error("clearTimeout has not been defined")}function i(e){if(t===setTimeout)return setTimeout(e,0);if((t===r||!t)&&setTimeout)return t=setTimeout,setTimeout(e,0);try{return t(e,0)}catch(n){try{return t.call(null,e,0)}catch(n){return t.call(this,e,0)}}}function u(t){if(e===clearTimeout)return clearTimeout(t);if((e===o||!e)&&clearTimeout)return e=clearTimeout,clearTimeout(t);try{return e(t)}catch(n){try{return e.call(null,t)}catch(n){return e.call(this,t)}}}!function(){try{t="function"==typeof setTimeout?setTimeout:r}catch(n){t=r}try{e="function"==typeof clearTimeout?clearTimeout:o}catch(n){e=o}}();var c,s=[],l=!1,a=-1;function f(){l&&c&&(l=!1,c.length?s=c.concat(s):a=-1,s.length&&h())}function h(){if(!l){var t=i(f);l=!0;for(var e=s.length;e;){for(c=s,s=[];++a<e;)c&&c[a].run();a=-1,e=s.length}c=null,l=!1,u(t)}}function m(t,e){this.fun=t,this.array=e}function p(){}n.nextTick=function(t){var e=new Array(arguments.length-1);if(arguments.length>1)for(var n=1;n<arguments.length;n++)e[n-1]=arguments[n];s.push(new m(t,e)),1!==s.length||l||i(h)},m.prototype.run=function(){this.fun.apply(null,this.array)},n.title="browser",n.browser=!0,n.env={},n.argv=[],n.version="",n.versions={},n.on=p,n.addListener=p,n.once=p,n.off=p,n.removeListener=p,n.removeAllListeners=p,n.emit=p,n.prependListener=p,n.prependOnceListener=p,n.listeners=function(t){return[]},n.binding=function(t){throw new Error("process.binding is not supported")},n.cwd=function(){return"/"},n.chdir=function(t){throw new Error("process.chdir is not supported")},n.umask=function(){return 0};
-},{}],"RiHe":[function(require,module,exports) {
-var process = require("process");
-var e=require("process");function r(e){return a(e)||c(e)||o(e)||t()}function t(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function o(e,r){if(e){if("string"==typeof e)return n(e,r);var t=Object.prototype.toString.call(e).slice(8,-1);return"Object"===t&&e.constructor&&(t=e.constructor.name),"Map"===t||"Set"===t?Array.from(e):"Arguments"===t||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)?n(e,r):void 0}}function c(e){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e))return Array.from(e)}function a(e){if(Array.isArray(e))return n(e)}function n(e,r){(null==r||r>e.length)&&(r=e.length);for(var t=0,o=new Array(r);t<r;t++)o[t]=e[t];return o}function s(e){return(s="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}var i=require("./destroyCircular"),l=require("./serializeError"),u="object"!==("undefined"==typeof window?"undefined":s(window))&&"object"===(void 0===e?"undefined":s(e));module.exports=function(){var e,t=Array.prototype.slice.call(arguments);this.options||(this.options={});var o=this.options,c=o.logToCloud,a=void 0===c?{}:c,n=o.useTrace,b=void 0!==n&&n,f=o.useColor,p=void 0===f||f,y=o.separateTypes,m=void 0!==y&&y,d="";if(b){var g=[],h=new Error;if(h.stack&&(g=h.stack.split("\n"))[2]){var k=g[2],v=k.lastIndexOf(":"),w=k.lastIndexOf("/",v-20)+1;d="(".concat(k.substring(w,v),")")}}for(var S=0;S<t.length;){if(0===S&&"string"==typeof t[S]&&(t.length>S+1?t[S]+=": ":t[S]+=" "),"object"===s(t[S]))if(t[S]instanceof Error)try{t[S]=l(t[S]),"object"===s(t[S])&&(t[S]=l(t[S].stack))}catch(C){}else t[S]=JSON.parse(JSON.stringify(i(t[S],[])));S++}var A="";"error_message"===this.action&&(t[0]=A=t[0]&&"string"==typeof t[0]?t[0].split("\n").slice(0,2).map(function(e){return e.replace(/\/.+\//g,"")}).toString():"error",this.action="error");var j=this.action,O="";if(p&&"string"==typeof t[0])if(u)switch(this.action){case"error":O="[41m[33m%s[0m";break;case"warn":O="[43m[30m%s[0m";break;case"info":O="[46m[30m%s[0m";break;case"debug":O="[45m[30m%s[0m";break;case"trace":O="[106m[30m%s[0m";break;case"success":O="[42m[30m%s[0m",this.action="log";break;case"subtle":O="[40m[90m%s[0m",this.action="log"}else switch(j){case"error":t[0]="%c"+t[0],t.splice(1,0,"background:red; color:yellow");break;case"warn":t[0]="%c"+t[0],t.splice(1,0,"background:yellow; color:black");break;case"info":t[0]="%c"+t[0],t.splice(1,0,"background:teal; color:black");break;case"debug":t[0]="%c"+t[0],t.splice(1,0,"background:magenta; color:black");break;case"trace":t[0]="%c"+t[0],t.splice(1,0,"background:cyan; color:black");break;case"success":t[0]="%c"+t[0],t.splice(1,0,"background:lawngreen; color:black");break;case"subtle":t[0]="%c"+t[0],t.splice(1,0,"color:grey")}switch(j){case"success":case"subtle":j="log"}if(m&&j+this.action!==this.sharedContext.last_action&&console.log(""),O?t=[O].concat(r(t),d?[d,""]:[""]):d&&(t=[].concat(r(t),[d])),(e=console)[j].apply(e,r(t)),a[j]&&a[j].apply(a,Array.prototype.slice.call(arguments).concat([d])),this.sharedContext.last_action=j+this.action,A)return A};
-},{"./destroyCircular":"67gq","./serializeError":"9p94","process":"pBGv"}],"Focm":[function(require,module,exports) {
-var o=require("./function/CConsoleLog"),e=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n={},t={log:o.bind({action:"log",options:e,sharedContext:n}),info:o.bind({action:"info",options:e,sharedContext:n}),debug:o.bind({action:"debug",options:e,sharedContext:n}),warn:o.bind({action:"warn",options:e,sharedContext:n}),error_message:o.bind({action:"error_message",options:e,sharedContext:n}),error:o.bind({action:"error",options:e,sharedContext:n}),trace:o.bind({action:"trace",options:e,sharedContext:n}),success:o.bind({action:"success",options:e,sharedContext:n}),subtle:o.bind({action:"subtle",options:e,sharedContext:n}),clear:console.clear,time:console.time,table:console.table,timeEnd:console.timeEnd,timeLog:console.timeLog,assert:console.assert,count:console.count,countReset:console.countReset,dir:console.dir,dirxml:console.dirxml,group:console.group,groupCollapsed:console.groupCollapsed,groupEnd:console.groupEnd};return console.profile&&(t.profile=console.profile),console.profileEnd&&(t.profileEnd=console.profileEnd),console.timeStamp&&(t.timeStamp=console.timeStamp),t};module.exports=e;
-},{"./function/CConsoleLog":"RiHe"}],"eK02":[function(require,module,exports) {
-function o(n){return(o="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(o){return typeof o}:function(o){return o&&"function"==typeof Symbol&&o.constructor===Symbol&&o!==Symbol.prototype?"symbol":typeof o})(n)}var n=require("./index.js");"object"===("undefined"==typeof window?"undefined":o(window))&&(window.cconsoleInit=n),module.exports=n;
-},{"./index.js":"Focm"}]},{},["eK02"], null)
-//# sourceMappingURL=/cconsoleInit.map
+
+var $a106ca99f7568e6e$exports = {};
+
+$a106ca99f7568e6e$exports = (value)=>{
+    if (typeof value === 'object') return $9958aab2a7720a5d$exports(value, []);
+    // People sometimes throw things besides Error objects…
+    if (typeof value === 'function') // `JSON.stringify()` discards functions. We do too, unless a function is thrown directly.
+    return `[Function: ${value.name || 'anonymous'}]`;
+    return value;
+};
+
+
+// use "browser" colors if in browser
+let $f469a2c293347517$var$NODEJSCOLORS = typeof window !== "object";
+// also use "browser" colors if in NodeJS with "--inspect" or "--inspect-brk" flag
+// if (NODEJSCOLORS && process.execArgv.join().includes("--inspect")) {
+//   NODEJSCOLORS = false
+// }
+/*
+ * Log to console
+ */ $f469a2c293347517$exports = function() {
+    let args = [
+        ...arguments
+    ];
+    // optionally, pass log-To-Cloud versions of each log action (log,info,error,etc.)
+    if (!this.options) this.options = {
+    };
+    let { logToCloud: logToCloud = {
+    } , useTrace: useTrace = false , useColor: useColor = true , separateTypes: separateTypes = false  } = this.options;
+    /*
+   * option:
+   * trace file:line, where log originated
+   */ let trace = "";
+    if (useTrace) {
+        let stack = [];
+        let err = new Error();
+        if (err.stack) {
+            stack = err.stack.split("\n");
+            if (stack[2]) {
+                // determine file:line which called this console log
+                let str = stack[2];
+                let i_end = str.lastIndexOf(":");
+                let i_start_before = str.lastIndexOf("/", i_end - 20) + 1;
+                trace = `(${str.substring(i_start_before, i_end)})`;
+            }
+        }
+    }
+    /*
+   * optimize message view
+   */ // let hasError = false
+    let a = 0;
+    while(a < args.length){
+        // if first argument is string, give it a colon ": "
+        if (a === 0 && typeof args[a] === "string") {
+            if (args.length > a + 1) args[a] += ": ";
+            else args[a] += " ";
+        }
+        // fix object from being printed as "[object Object]"
+        if (typeof args[a] === "object") {
+            if (args[a] instanceof Error) // error object
+            // hasError = true
+            try {
+                // going to assume this is an Error
+                args[a] = $a106ca99f7568e6e$exports(args[a]);
+                if (typeof args[a] === "object") args[a] = $a106ca99f7568e6e$exports(args[a].stack);
+            } catch (e) {
+            // console.error(e)
+            }
+            else // regular object
+            // serialize so it does not display changes made after log has printed
+            args[a] = JSON.parse(JSON.stringify($9958aab2a7720a5d$exports(args[a], [])));
+        }
+        a++;
+    }
+    /*
+   * error - prepare message for output as string
+   */ let error_message = "";
+    if (this.action === "error_message") {
+        args[0] = error_message = args[0] && typeof args[0] === "string" ? args[0].split("\n").slice(0, 2).map((str)=>str.replace(/\/.+\//g, "")
+        ).toString() : "error";
+        this.action = "error";
+    }
+    /*
+   * color1 messages
+   *
+   * on NODE JS
+   * https://en.wikipedia.org/wiki/ANSI_escape_code#Colors <- use "FG Code" for text, "BG Code" for background
+   *
+   * \x1b[41m     \x1b[33m       %s        \x1b[0m
+   * red bg       yellow text    string    escape for next line
+   *
+   * \x1b[47m           \x1b[30m       %s        \x1b[0m
+   * light grey bg      black text     string    escape for next line
+   */ let action = this.action;
+    let color1 = "";
+    let color2 = "";
+    if (useColor && typeof args[0] === "string") {
+        /*
+     * use by NODEJS in terminal
+     */ if ($f469a2c293347517$var$NODEJSCOLORS) switch(this.action){
+            case "error":
+                color1 = "\x1b[41m\x1b[33m%s\x1b[0m";
+                break;
+            case "warn":
+                color1 = "\x1b[43m\x1b[30m%s\x1b[0m";
+                break;
+            case "info":
+                color1 = "\x1b[46m\x1b[30m%s\x1b[0m";
+                break;
+            case "debug":
+                color1 = "\x1b[45m\x1b[30m%s\x1b[0m";
+                break;
+            case "trace":
+                color1 = "\x1b[106m\x1b[30m%s\x1b[0m";
+                break;
+            case "success":
+                color1 = "\x1b[42m\x1b[30m%s\x1b[0m";
+                this.action = "log";
+                break;
+            case "subtle":
+                color1 = "\x1b[40m\x1b[90m%s\x1b[0m";
+                this.action = "log";
+                break;
+        }
+        else /*
+       * for use in BROWSER
+       */ switch(action){
+            case "error":
+                args[0] = "%c" + args[0];
+                args.splice(1, 0, "background:red; color:yellow");
+                break;
+            case "warn":
+                args[0] = "%c" + args[0];
+                args.splice(1, 0, "background:yellow; color:black");
+                break;
+            case "log":
+                args[0] = "%c" + args[0];
+                args.splice(1, 0, "background:cyan; color:black");
+                break;
+            case "info":
+                args[0] = "%c" + args[0];
+                args.splice(1, 0, "background:teal; color:black");
+                break;
+            case "debug":
+                args[0] = "%c" + args[0];
+                args.splice(1, 0, "background:magenta; color:black");
+                break;
+            case "trace":
+                args[0] = "%c" + args[0];
+                args.splice(1, 0, "background:cyan; color:black");
+                break;
+            case "success":
+                args[0] = "%c" + args[0];
+                args.splice(1, 0, "background:lawngreen; color:black");
+                break;
+            case "subtle":
+                args[0] = "%c" + args[0];
+                args.splice(1, 0, "color:grey");
+                break;
+        }
+    }
+    /*
+   * custom actions
+   */ switch(action){
+        case "success":
+            action = "log";
+            break;
+        case "subtle":
+            action = "log";
+            break;
+    }
+    /*
+   * Add space between different types (groups) of messages
+   *    TODO: maybe upgrade this to use console.group in browser
+   */ if (separateTypes) {
+        if (action + this.action !== this.sharedContext.last_action) console.log("");
+    }
+    /*
+   * Add trace (file-name:line-number)
+   */ // log color
+    if (color1) {
+        if (trace) // color1, trace
+        args = [
+            color1,
+            ...args,
+            trace,
+            color2
+        ];
+        else // color1, no trace
+        args = [
+            color1,
+            ...args,
+            color2
+        ];
+    } else if (trace) // no color1, trace
+    args = [
+        ...args,
+        trace
+    ];
+    /*
+   * Log message to console
+   * use specified action (log, info, debug, warn, etc)
+   */ console[action](...args);
+    /*
+   * Log original content to cloud
+   */ if (logToCloud[action]) logToCloud[action](...arguments, trace);
+    /*
+   * Add linebreak when different actions back to back
+   * but no linebreak when same action
+   */ this.sharedContext.last_action = action + this.action;
+    /*
+   * return
+   */ if (error_message) return error_message;
+};
+
+
+/**
+ * Log to console, and optionally to your custom cloud functions
+ *    In console, will color code each message:
+ *        info: green
+ *        warn: orange
+ *        error: red
+ *    Other methods (log, debug, trace, table, are not colored,
+ *    because the coloring breaks Chrome developer tools console message)
+ *
+ * @param options {object} - options and settings
+ *    See github project for more documentation and examples.
+ * @param options.logToCloud {object} - an object of {key:value{function},} pairs
+ *    Ex: {log:function(){}, info:function(){}, etc}
+ *    Tested, and works well with LogDNA. `options.logToCloud = logdna.createLogger()`
+ *    See github project for more documentation and examples.
+ */ const $cf838c15c8b009ba$var$cconsoleInit = function(options = {
+}) {
+    // so different actions (log/info/debug/etc) can communicate with eachother:
+    let sharedContext = {
+    };
+    // log
+    let cconsole = {
+        // custom (colorful) loggers
+        log: $f469a2c293347517$exports.bind({
+            action: "log",
+            options: options,
+            sharedContext: sharedContext
+        }),
+        info: $f469a2c293347517$exports.bind({
+            action: "info",
+            options: options,
+            sharedContext: sharedContext
+        }),
+        debug: $f469a2c293347517$exports.bind({
+            action: "debug",
+            options: options,
+            sharedContext: sharedContext
+        }),
+        warn: $f469a2c293347517$exports.bind({
+            action: "warn",
+            options: options,
+            sharedContext: sharedContext
+        }),
+        error_message: $f469a2c293347517$exports.bind({
+            action: "error_message",
+            options: options,
+            sharedContext: sharedContext
+        }),
+        error: $f469a2c293347517$exports.bind({
+            action: "error",
+            options: options,
+            sharedContext: sharedContext
+        }),
+        trace: $f469a2c293347517$exports.bind({
+            action: "trace",
+            options: options,
+            sharedContext: sharedContext
+        }),
+        success: $f469a2c293347517$exports.bind({
+            action: "success",
+            options: options,
+            sharedContext: sharedContext
+        }),
+        subtle: $f469a2c293347517$exports.bind({
+            action: "subtle",
+            options: options,
+            sharedContext: sharedContext
+        }),
+        // pass-through system debugging loggers
+        clear: console.clear,
+        time: console.time,
+        table: console.table,
+        timeEnd: console.timeEnd,
+        timeLog: console.timeLog,
+        assert: console.assert,
+        count: console.count,
+        countReset: console.countReset,
+        dir: console.dir,
+        dirxml: console.dirxml,
+        group: console.group,
+        groupCollapsed: console.groupCollapsed,
+        groupEnd: console.groupEnd
+    };
+    // extra pass-through (default) loggers (non-standard)
+    if (console.profile) cconsole.profile = console.profile;
+    if (console.profileEnd) cconsole.profileEnd = console.profileEnd;
+    if (console.timeStamp) cconsole.timeStamp = console.timeStamp;
+    // return console
+    return cconsole;
+};
+/*
+ * Export cconsole
+ */ $cf838c15c8b009ba$exports = $cf838c15c8b009ba$var$cconsoleInit;
+
+
+if (typeof window === "object") window.cconsole = $cf838c15c8b009ba$exports();
+$0eb1de57af9dcd86$exports = $cf838c15c8b009ba$exports();
+
+
+export {$0eb1de57af9dcd86$exports as default};
+//# sourceMappingURL=cconsoleInit.js.map
